@@ -2,6 +2,8 @@ import { http } from '@/shared/api/mocks/http';
 import type { ApiSchemas } from '@/shared/api/schema';
 import { HttpResponse } from 'msw';
 
+import { verifyTokenOrThrow } from '../session';
+
 const boards: ApiSchemas['Board'][] = [
   {
     id: 'board-1',
@@ -14,10 +16,12 @@ const boards: ApiSchemas['Board'][] = [
 ];
 
 export const boardsHandlers = [
-  http.get('/boards', () => {
+  http.get('/boards', async ctx => {
+    await verifyTokenOrThrow(ctx.request);
     return HttpResponse.json(boards);
   }),
   http.post('/boards', async ctx => {
+    await verifyTokenOrThrow(ctx.request);
     const data = await ctx.request.json();
     const board = {
       id: crypto.randomUUID(),
@@ -26,7 +30,8 @@ export const boardsHandlers = [
     boards.push(board);
     return HttpResponse.json(board);
   }),
-  http.delete('/boards/{boardId}', async ({ params }) => {
+  http.delete('/boards/{boardId}', async ({ params, request }) => {
+    await verifyTokenOrThrow(request);
     const { boardId } = params;
     const index = boards.findIndex(board => board.id === boardId);
     if (index === -1) {

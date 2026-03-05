@@ -9,6 +9,11 @@ import { href, Link } from 'react-router-dom';
 function BoardsListPage() {
   const queryClient = useQueryClient();
   const boardsQuery = rqClient.useQuery('get', '/boards');
+
+  const { data } = rqClient.useQuery('post', '/auth/refresh');
+
+  console.log(data);
+
   const createBoardMutation = rqClient.useMutation('post', '/boards', {
     onSettled: () => {
       queryClient.invalidateQueries(rqClient.queryOptions('get', '/boards'));
