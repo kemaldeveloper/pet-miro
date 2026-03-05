@@ -6,7 +6,7 @@ export function App() {
   const location = useLocation();
   const isAuth = location.pathname === ROUTES.LOGIN || location.pathname === ROUTES.REGISTER;
   return (
-    <div className="bg-gray-400">
+    <div className="min-h-screen flex flex-col">
       {!isAuth && <AppHeader />}
       <Outlet />
     </div>
