@@ -3731,6 +3731,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"create-gstore@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "create-gstore@npm:0.2.0"
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  checksum: 10c0/4100d04e4dc8afae1116a6effe8c2ea51b35a0701575cc60fbe25f37cb391532a19cb13eba8231a1f2d5fe5dc017192c1602caca4564690dae14f54c3a3d05a2
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.5, cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
@@ -5784,6 +5794,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^5.1.1"
     class-variance-authority: "npm:^0.7.1"
     clsx: "npm:^2.1.1"
+    create-gstore: "npm:^0.2.0"
     eslint: "npm:^9.39.1"
     eslint-import-resolver-typescript: "npm:^4.4.4"
     eslint-plugin-boundaries: "npm:^5.4.0"

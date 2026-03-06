@@ -20,7 +20,6 @@ export function LoginForm() {
   });
 
   const onSubmit = form.handleSubmit(data => {
-    console.log(data);
     login(data);
   });
 

@@ -87,16 +87,6 @@ export const authHandlers = [
   http.post('/auth/refresh', async ({ cookies }) => {
     const refreshToken = cookies.refreshToken;
 
-    if (!refreshToken) {
-      return HttpResponse.json(
-        {
-          message: 'Refresh token не найден',
-          code: 'REFRESH_TOKEN_MISSING',
-        },
-        { status: 401 },
-      );
-    }
-
     try {
       const session = await verifyToken(refreshToken);
       const user = mockUsers.find(u => u.id === session.userId);
